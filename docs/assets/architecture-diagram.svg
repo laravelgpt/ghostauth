@@ -1,0 +1,369 @@
+<svg width="800" height="700" xmlns="http://www.w3.org/2000/svg" style="max-width:100%; height:auto;"><text x="400" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#2c3e50">GhostAuth v2 Architecture</text>\n
+        <rect x="100" y="60" width="600" height="80" 
+              fill="#f8f9fa" stroke="#667eea" stroke-width="2" rx="10" ry="10" />
+        <text x="400" y="85" text-anchor="middle" font-size="16" font-weight="bold" fill="#2c3e50">
+            Your Application
+        </text>
+        <text x="400" y="110" text-anchor="middle" font-size="12" fill="#666">
+            Laravel, Symfony, Slim, or any PSR-7/PSR-15 application
+        </text>
+        \n
+                <rect x="120" y="150" width="100" height="40" 
+                      fill="#e3f2fd" stroke="#2196f3" stroke-width="1" rx="5" ry="5" />
+                <text x="170" y="170" text-anchor="middle" font-size="10" fill="#1565c0">
+                    Controllers
+                </text>
+                \n
+                <rect x="350" y="150" width="100" height="40" 
+                      fill="#e3f2fd" stroke="#2196f3" stroke-width="1" rx="5" ry="5" />
+                <text x="400" y="170" text-anchor="middle" font-size="10" fill="#1565c0">
+                    Routes
+                </text>
+                \n
+                <rect x="580" y="150" width="100" height="40" 
+                      fill="#e3f2fd" stroke="#2196f3" stroke-width="1" rx="5" ry="5" />
+                <text x="630" y="170" text-anchor="middle" font-size="10" fill="#1565c0">
+                    Middleware
+                </text>
+                \n
+        <rect x="100" y="140" width="600" height="80" 
+              fill="#f8f9fa" stroke="#667eea" stroke-width="2" rx="10" ry="10" />
+        <text x="400" y="165" text-anchor="middle" font-size="16" font-weight="bold" fill="#2c3e50">
+            AuthManager
+        </text>
+        <text x="400" y="190" text-anchor="middle" font-size="12" fill="#666">
+            Main authentication orchestrator
+        </text>
+        \n
+                <rect x="120" y="230" width="100" height="40" 
+                      fill="#e3f2fd" stroke="#2196f3" stroke-width="1" rx="5" ry="5" />
+                <text x="170" y="250" text-anchor="middle" font-size="10" fill="#1565c0">
+                    PasswordProvider
+                </text>
+                \n
+                    <line x1="170" y1="140" 
+                          x2="170" y2="230" 
+                          stroke="#667eea" stroke-width="1.5" marker-end="url(#arrowhead)" />
+                    \n
+                <rect x="235" y="230" width="100" height="40" 
+                      fill="#e3f2fd" stroke="#2196f3" stroke-width="1" rx="5" ry="5" />
+                <text x="285" y="250" text-anchor="middle" font-size="10" fill="#1565c0">
+                    OtpProvider
+                </text>
+                \n
+                    <line x1="285" y1="140" 
+                          x2="285" y2="230" 
+                          stroke="#667eea" stroke-width="1.5" marker-end="url(#arrowhead)" />
+                    \n
+                <rect x="350" y="230" width="100" height="40" 
+                      fill="#e3f2fd" stroke="#2196f3" stroke-width="1" rx="5" ry="5" />
+                <text x="400" y="250" text-anchor="middle" font-size="10" fill="#1565c0">
+                    GoogleProvider
+                </text>
+                \n
+                    <line x1="400" y1="140" 
+                          x2="400" y2="230" 
+                          stroke="#667eea" stroke-width="1.5" marker-end="url(#arrowhead)" />
+                    \n
+                <rect x="465" y="230" width="100" height="40" 
+                      fill="#e3f2fd" stroke="#2196f3" stroke-width="1" rx="5" ry="5" />
+                <text x="515" y="250" text-anchor="middle" font-size="10" fill="#1565c0">
+                    OidcProvider
+                </text>
+                \n
+                    <line x1="515" y1="140" 
+                          x2="515" y2="230" 
+                          stroke="#667eea" stroke-width="1.5" marker-end="url(#arrowhead)" />
+                    \n
+                <rect x="580" y="230" width="100" height="40" 
+                      fill="#e3f2fd" stroke="#2196f3" stroke-width="1" rx="5" ry="5" />
+                <text x="630" y="250" text-anchor="middle" font-size="10" fill="#1565c0">
+                    MagicLinkProvider
+                </text>
+                \n
+                    <line x1="630" y1="140" 
+                          x2="630" y2="230" 
+                          stroke="#667eea" stroke-width="1.5" marker-end="url(#arrowhead)" />
+                    \n
+        <rect x="100" y="220" width="600" height="80" 
+              fill="#f8f9fa" stroke="#667eea" stroke-width="2" rx="10" ry="10" />
+        <text x="400" y="245" text-anchor="middle" font-size="16" font-weight="bold" fill="#2c3e50">
+            GhostAuthMiddleware
+        </text>
+        <text x="400" y="270" text-anchor="middle" font-size="12" fill="#666">
+            Automatic security protection
+        </text>
+        \n
+                <rect x="120" y="310" width="100" height="40" 
+                      fill="#e3f2fd" stroke="#2196f3" stroke-width="1" rx="5" ry="5" />
+                <text x="170" y="330" text-anchor="middle" font-size="10" fill="#1565c0">
+                    SessionGuard
+                </text>
+                \n
+                    <line x1="170" y1="220" 
+                          x2="170" y2="310" 
+                          stroke="#667eea" stroke-width="1.5" marker-end="url(#arrowhead)" />
+                    \n
+                <rect x="235" y="310" width="100" height="40" 
+                      fill="#e3f2fd" stroke="#2196f3" stroke-width="1" rx="5" ry="5" />
+                <text x="285" y="330" text-anchor="middle" font-size="10" fill="#1565c0">
+                    CookieGuard
+                </text>
+                \n
+                    <line x1="285" y1="220" 
+                          x2="285" y2="310" 
+                          stroke="#667eea" stroke-width="1.5" marker-end="url(#arrowhead)" />
+                    \n
+                <rect x="350" y="310" width="100" height="40" 
+                      fill="#e3f2fd" stroke="#2196f3" stroke-width="1" rx="5" ry="5" />
+                <text x="400" y="330" text-anchor="middle" font-size="10" fill="#1565c0">
+                    DeviceFingerprint
+                </text>
+                \n
+                    <line x1="400" y1="220" 
+                          x2="400" y2="310" 
+                          stroke="#667eea" stroke-width="1.5" marker-end="url(#arrowhead)" />
+                    \n
+                <rect x="465" y="310" width="100" height="40" 
+                      fill="#e3f2fd" stroke="#2196f3" stroke-width="1" rx="5" ry="5" />
+                <text x="515" y="330" text-anchor="middle" font-size="10" fill="#1565c0">
+                    IpGuard
+                </text>
+                \n
+                    <line x1="515" y1="220" 
+                          x2="515" y2="310" 
+                          stroke="#667eea" stroke-width="1.5" marker-end="url(#arrowhead)" />
+                    \n
+                <rect x="580" y="310" width="100" height="40" 
+                      fill="#e3f2fd" stroke="#2196f3" stroke-width="1" rx="5" ry="5" />
+                <text x="630" y="330" text-anchor="middle" font-size="10" fill="#1565c0">
+                    AccountLockout
+                </text>
+                \n
+                    <line x1="630" y1="220" 
+                          x2="630" y2="310" 
+                          stroke="#667eea" stroke-width="1.5" marker-end="url(#arrowhead)" />
+                    \n
+        <rect x="100" y="300" width="600" height="80" 
+              fill="#f8f9fa" stroke="#667eea" stroke-width="2" rx="10" ry="10" />
+        <text x="400" y="325" text-anchor="middle" font-size="16" font-weight="bold" fill="#2c3e50">
+            Services
+        </text>
+        <text x="400" y="350" text-anchor="middle" font-size="12" fill="#666">
+            Core functionality services
+        </text>
+        \n
+                <rect x="120" y="390" width="100" height="40" 
+                      fill="#e3f2fd" stroke="#2196f3" stroke-width="1" rx="5" ry="5" />
+                <text x="170" y="410" text-anchor="middle" font-size="10" fill="#1565c0">
+                    JwtTokenSvc (RS256/HS256)
+                </text>
+                \n
+                    <line x1="170" y1="300" 
+                          x2="170" y2="390" 
+                          stroke="#667eea" stroke-width="1.5" marker-end="url(#arrowhead)" />
+                    \n
+                <rect x="350" y="390" width="100" height="40" 
+                      fill="#e3f2fd" stroke="#2196f3" stroke-width="1" rx="5" ry="5" />
+                <text x="400" y="410" text-anchor="middle" font-size="10" fill="#1565c0">
+                    EventDispatcher (23 event types)
+                </text>
+                \n
+                    <line x1="400" y1="300" 
+                          x2="400" y2="390" 
+                          stroke="#667eea" stroke-width="1.5" marker-end="url(#arrowhead)" />
+                    \n
+                <rect x="580" y="390" width="100" height="40" 
+                      fill="#e3f2fd" stroke="#2196f3" stroke-width="1" rx="5" ry="5" />
+                <text x="630" y="410" text-anchor="middle" font-size="10" fill="#1565c0">
+                    WebhookDispatcher (HMAC-signed)
+                </text>
+                \n
+                    <line x1="630" y1="300" 
+                          x2="630" y2="390" 
+                          stroke="#667eea" stroke-width="1.5" marker-end="url(#arrowhead)" />
+                    \n
+        <rect x="100" y="380" width="600" height="80" 
+              fill="#f8f9fa" stroke="#667eea" stroke-width="2" rx="10" ry="10" />
+        <text x="400" y="405" text-anchor="middle" font-size="16" font-weight="bold" fill="#2c3e50">
+            Cache (PSR-16)
+        </text>
+        <text x="400" y="430" text-anchor="middle" font-size="12" fill="#666">
+            Fast storage for transient data
+        </text>
+        \n
+                <rect x="120" y="470" width="100" height="40" 
+                      fill="#e3f2fd" stroke="#2196f3" stroke-width="1" rx="5" ry="5" />
+                <text x="170" y="490" text-anchor="middle" font-size="10" fill="#1565c0">
+                    JWT denylist (revoked JTIs)
+                </text>
+                \n
+                    <line x1="170" y1="380" 
+                          x2="170" y2="470" 
+                          stroke="#667eea" stroke-width="1.5" marker-end="url(#arrowhead)" />
+                    \n
+                <rect x="177" y="470" width="100" height="40" 
+                      fill="#e3f2fd" stroke="#2196f3" stroke-width="1" rx="5" ry="5" />
+                <text x="227" y="490" text-anchor="middle" font-size="10" fill="#1565c0">
+                    OTP state storage
+                </text>
+                \n
+                    <line x1="227" y1="380" 
+                          x2="227" y2="470" 
+                          stroke="#667eea" stroke-width="1.5" marker-end="url(#arrowhead)" />
+                    \n
+                <rect x="234" y="470" width="100" height="40" 
+                      fill="#e3f2fd" stroke="#2196f3" stroke-width="1" rx="5" ry="5" />
+                <text x="284" y="490" text-anchor="middle" font-size="10" fill="#1565c0">
+                    OAuth state tokens
+                </text>
+                \n
+                    <line x1="284" y1="380" 
+                          x2="284" y2="470" 
+                          stroke="#667eea" stroke-width="1.5" marker-end="url(#arrowhead)" />
+                    \n
+                <rect x="291" y="470" width="100" height="40" 
+                      fill="#e3f2fd" stroke="#2196f3" stroke-width="1" rx="5" ry="5" />
+                <text x="341" y="490" text-anchor="middle" font-size="10" fill="#1565c0">
+                    Session registry (per-user active sessions)
+                </text>
+                \n
+                    <line x1="341" y1="380" 
+                          x2="341" y2="470" 
+                          stroke="#667eea" stroke-width="1.5" marker-end="url(#arrowhead)" />
+                    \n
+                <rect x="348" y="470" width="100" height="40" 
+                      fill="#e3f2fd" stroke="#2196f3" stroke-width="1" rx="5" ry="5" />
+                <text x="398" y="490" text-anchor="middle" font-size="10" fill="#1565c0">
+                    Password history
+                </text>
+                \n
+                    <line x1="398" y1="380" 
+                          x2="398" y2="470" 
+                          stroke="#667eea" stroke-width="1.5" marker-end="url(#arrowhead)" />
+                    \n
+                <rect x="405" y="470" width="100" height="40" 
+                      fill="#e3f2fd" stroke="#2196f3" stroke-width="1" rx="5" ry="5" />
+                <text x="455" y="490" text-anchor="middle" font-size="10" fill="#1565c0">
+                    Account lockout tracking
+                </text>
+                \n
+                    <line x1="455" y1="380" 
+                          x2="455" y2="470" 
+                          stroke="#667eea" stroke-width="1.5" marker-end="url(#arrowhead)" />
+                    \n
+                <rect x="462" y="470" width="100" height="40" 
+                      fill="#e3f2fd" stroke="#2196f3" stroke-width="1" rx="5" ry="5" />
+                <text x="512" y="490" text-anchor="middle" font-size="10" fill="#1565c0">
+                    Trusted devices
+                </text>
+                \n
+                    <line x1="512" y1="380" 
+                          x2="512" y2="470" 
+                          stroke="#667eea" stroke-width="1.5" marker-end="url(#arrowhead)" />
+                    \n
+                <rect x="519" y="470" width="100" height="40" 
+                      fill="#e3f2fd" stroke="#2196f3" stroke-width="1" rx="5" ry="5" />
+                <text x="569" y="490" text-anchor="middle" font-size="10" fill="#1565c0">
+                    Consent records
+                </text>
+                \n
+                    <line x1="569" y1="380" 
+                          x2="569" y2="470" 
+                          stroke="#667eea" stroke-width="1.5" marker-end="url(#arrowhead)" />
+                    \n
+                <rect x="576" y="470" width="100" height="40" 
+                      fill="#e3f2fd" stroke="#2196f3" stroke-width="1" rx="5" ry="5" />
+                <text x="626" y="490" text-anchor="middle" font-size="10" fill="#1565c0">
+                    Anomaly detection history
+                </text>
+                \n
+                    <line x1="626" y1="380" 
+                          x2="626" y2="470" 
+                          stroke="#667eea" stroke-width="1.5" marker-end="url(#arrowhead)" />
+                    \n
+        <rect x="100" y="460" width="600" height="80" 
+              fill="#f8f9fa" stroke="#667eea" stroke-width="2" rx="10" ry="10" />
+        <text x="400" y="485" text-anchor="middle" font-size="16" font-weight="bold" fill="#2c3e50">
+            Database
+        </text>
+        <text x="400" y="510" text-anchor="middle" font-size="12" fill="#666">
+            Persistent storage for user data
+        </text>
+        \n
+                <rect x="120" y="550" width="100" height="40" 
+                      fill="#e3f2fd" stroke="#2196f3" stroke-width="1" rx="5" ry="5" />
+                <text x="170" y="570" text-anchor="middle" font-size="10" fill="#1565c0">
+                    Users table
+                </text>
+                \n
+                    <line x1="170" y1="460" 
+                          x2="170" y2="550" 
+                          stroke="#667eea" stroke-width="1.5" marker-end="url(#arrowhead)" />
+                    \n
+                <rect x="196" y="550" width="100" height="40" 
+                      fill="#e3f2fd" stroke="#2196f3" stroke-width="1" rx="5" ry="5" />
+                <text x="246" y="570" text-anchor="middle" font-size="10" fill="#1565c0">
+                    email, password_hash, provider, provider_id
+                </text>
+                \n
+                    <line x1="246" y1="460" 
+                          x2="246" y2="550" 
+                          stroke="#667eea" stroke-width="1.5" marker-end="url(#arrowhead)" />
+                    \n
+                <rect x="272" y="550" width="100" height="40" 
+                      fill="#e3f2fd" stroke="#2196f3" stroke-width="1" rx="5" ry="5" />
+                <text x="322" y="570" text-anchor="middle" font-size="10" fill="#1565c0">
+                    mfa_secret, webauthn_challenge
+                </text>
+                \n
+                    <line x1="322" y1="460" 
+                          x2="322" y2="550" 
+                          stroke="#667eea" stroke-width="1.5" marker-end="url(#arrowhead)" />
+                    \n
+                <rect x="348" y="550" width="100" height="40" 
+                      fill="#e3f2fd" stroke="#2196f3" stroke-width="1" rx="5" ry="5" />
+                <text x="398" y="570" text-anchor="middle" font-size="10" fill="#1565c0">
+                    consent_version, consent_given_at
+                </text>
+                \n
+                    <line x1="398" y1="460" 
+                          x2="398" y2="550" 
+                          stroke="#667eea" stroke-width="1.5" marker-end="url(#arrowhead)" />
+                    \n
+                <rect x="424" y="550" width="100" height="40" 
+                      fill="#e3f2fd" stroke="#2196f3" stroke-width="1" rx="5" ry="5" />
+                <text x="474" y="570" text-anchor="middle" font-size="10" fill="#1565c0">
+                    last_login_at, failed_login_count, locked_until
+                </text>
+                \n
+                    <line x1="474" y1="460" 
+                          x2="474" y2="550" 
+                          stroke="#667eea" stroke-width="1.5" marker-end="url(#arrowhead)" />
+                    \n
+                <rect x="500" y="550" width="100" height="40" 
+                      fill="#e3f2fd" stroke="#2196f3" stroke-width="1" rx="5" ry="5" />
+                <text x="550" y="570" text-anchor="middle" font-size="10" fill="#1565c0">
+                    trusted_device_fingerprint (hashed)
+                </text>
+                \n
+                    <line x1="550" y1="460" 
+                          x2="550" y2="550" 
+                          stroke="#667eea" stroke-width="1.5" marker-end="url(#arrowhead)" />
+                    \n
+                <rect x="576" y="550" width="100" height="40" 
+                      fill="#e3f2fd" stroke="#2196f3" stroke-width="1" rx="5" ry="5" />
+                <text x="626" y="570" text-anchor="middle" font-size="10" fill="#1565c0">
+                    created_at, updated_at
+                </text>
+                \n
+                    <line x1="626" y1="460" 
+                          x2="626" y2="550" 
+                          stroke="#667eea" stroke-width="1.5" marker-end="url(#arrowhead)" />
+                    \n
+    <defs>
+        <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+            <polygon points="0 0, 8 3, 0 6" fill="#667eea" />
+        </marker>
+    </defs>
+    </svg>

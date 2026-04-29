@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GhostAuth v2 v2.0.0 - Documentation</title>
+    <link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+    <header>
+        <h1>GhostAuth v2</h1>
+        <p>A comprehensive, secure, and flexible authentication package for PHP 8.3+ (backward compatible with PHP 8.2).</p>
+        <p><em>Version 2.0.0 • Generated on 2026-04-29</em></p>
+    </header>
+
+    <main>
+        <section id="introduction">
+            <h2>Introduction</h2>
+            <p>A comprehensive, secure, and flexible authentication package for PHP 8.3+ (backward compatible with PHP 8.2).</p>
+        </section>
+
+        <section id="features">
+            <h2>Features</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Key Features</h3>
+                    <ul>
+                        <li>Email + Password authentication (Argon2id hashing with pepper)</li>
+<li>OTP authentication (Email & Phone)</li>
+<li>Social login (OAuth 2.0) - GitHub, Google providers included</li>
+<li>SSO/Single Sign-On (OIDC)</li>
+<li>TOTP/Google Authenticator MFA</li>
+<li>Passkeys/WebAuthn MFA</li>
+<li>Magic link authentication (passwordless)</li>
+<li>Concurrent session management (limit per user)</li>
+<li>Session rotation & fixation protection</li>
+<li>Cookie encryption (AES-256-CTR + HMAC-SHA256 signing)</li>
+<li>IP change cookie destroyer (invalidate all sessions on suspicious IP change)</li>
+<li>Device fingerprinting (IP + User-Agent + Language hash)</li>
+<li>Secure cookie flags (HttpOnly, Secure, SameSite=Strict)</li>
+<li>PSR-15 middleware for automatic protection</li>
+<li>JWT tokens with RS256/HS256 signing</li>
+<li>Token denylist for revocation (PSR-16 cache)</li>
+<li>Rate limiting aware (integrate with your rate limiter)</li>
+<li>Password strength validation (zxcvbn-inspired)</li>
+<li>Password breach checking (HaveIBeenPwned k-anonymity API)</li>
+<li>Password history (prevent reuse)</li>
+<li>Account lockout (brute force protection with exponential backoff)</li>
+<li>Trusted device management (skip MFA on trusted devices)</li>
+<li>Anomaly detection (impossible travel, new country, velocity checks)</li>
+<li>Security events & notifications (23 event types)</li>
+<li>Webhook dispatcher (HMAC-signed notifications to external systems)</li>
+<li>IP allowlist/denylist (CIDR support)</li>
+<li>Privacy consent management (GDPR/CCPA ready)</li>
+<li>PSR-4, PSR-7, PSR-11, PSR-15, PSR-16, PSR-3 compliant</li>
+<li>Framework agnostic (works with any PSR-7/PSR-15 app)</li>
+<li>Dependency injection friendly (interfaces for everything)</li>
+<li>Comprehensive PHPUnit test suite</li>
+<li>Clear separation of concerns (Strategy, Decorator, Provider patterns)</li>
+<li>Immutable security events</li>
+<li>Global event dispatcher with listeners</li>
+<li>Type-safe DTOs and Enums</li>
+<li>Full PHP 8.3+ features (readonly classes, typed constants, backed enums, json_validate)</li>
+<li>Graceful degradation to PHP 8.2</li>
+
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="installation">
+            <h2>Installation</h2>
+            <pre><code>composer require ghostauth/ghostauth</code></pre><p>Requires PHP 8.2+ (PHP 8.3+ recommended for full feature set).</p>
+        </section>
+
+        <section id="usage">
+            <h2>Usage</h2>
+            <h3>Basic Authentication</h3><pre><code>use GhostAuth\AuthManager;
+use GhostAuth\Providers\EmailPasswordProvider;
+
+// Initialize the AuthManager
+$authManager = new AuthManager($container);
+
+// Attempt to authenticate
+$result = $authManager->authenticate(
+    new EmailPasswordProvider(),
+    [
+        'email' => 'user@example.com',
+        'password' => 'provided_password',
+    ]
+);
+
+if ($result->isValid()) {
+    // Authentication successful
+    $user = $result->getUser();
+    // Set session, redirect, etc.
+} else {
+    // Authentication failed
+    $errors = $result->getErrors();
+}
+</code></pre><h3>Middleware Integration (PSR-15)</h3><pre><code>use GhostAuth\Middleware\GhostAuthMiddleware;
+
+// In your middleware pipeline
+$app->add(new GhostAuthMiddleware($authManager));
+</code></pre>
+        </section>
+
+        <section id="configuration">
+            <h2>Configuration</h2>
+            <h3>Basic Configuration</h3><pre><code>// Example config.php
+return [
+    'cookie' => [
+        'name' => 'ghostauth_session',
+        'path' => '/',
+        'domain' => null,
+        'secure' => true,
+        'httponly' => true,
+        'samesite' => 'Strict',
+    ],
+    'jwt' => [
+        'signing_key' => file_get_contents('/path/to/private.key'),
+        'signing_algorithm' => 'RS256',
+        'ttl' => 3600, // 1 hour
+    ],
+    'providers' => [
+        'email' => [
+            'model' => App\Models\User::class,
+            'table' => 'users',
+        ],
+        'google' => [
+            'client_id' => env('GOOGLE_CLIENT_ID'),
+            'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+            'redirect_uri' => '/auth/google/callback',
+        ],
+        // ... other providers
+    ],
+    // ... more config
+];
+</code></pre>
+        </section>
+
+        
+        <section id="architecture">
+            <h2>Architecture</h2>
+            <div class="architecture-diagram">
+                {'title': 'GhostAuth v2 Architecture', 'layers': [{'name': 'Your Application', 'description': 'Laravel, Symfony, Slim, or any PSR-7/PSR-15 application', 'components': [{'name': 'Controllers'}, {'name': 'Routes'}, {'name': 'Middleware'}]}, {'name': 'AuthManager', 'description': 'Main authentication orchestrator', 'components': [{'name': 'PasswordProvider'}, {'name': 'OtpProvider'}, {'name': 'GoogleProvider'}, {'name': 'OidcProvider'}, {'name': 'MagicLinkProvider'}]}, {'name': 'GhostAuthMiddleware', 'description': 'Automatic security protection', 'components': [{'name': 'SessionGuard'}, {'name': 'CookieGuard'}, {'name': 'DeviceFingerprint'}, {'name': 'IpGuard'}, {'name': 'AccountLockout'}]}, {'name': 'Services', 'description': 'Core functionality services', 'components': [{'name': 'JwtTokenSvc (RS256/HS256)'}, {'name': 'EventDispatcher (23 event types)'}, {'name': 'WebhookDispatcher (HMAC-signed)'}]}, {'name': 'Cache (PSR-16)', 'description': 'Fast storage for transient data', 'components': [{'name': 'JWT denylist (revoked JTIs)'}, {'name': 'OTP state storage'}, {'name': 'OAuth state tokens'}, {'name': 'Session registry (per-user active sessions)'}, {'name': 'Password history'}, {'name': 'Account lockout tracking'}, {'name': 'Trusted devices'}, {'name': 'Consent records'}, {'name': 'Anomaly detection history'}]}, {'name': 'Database', 'description': 'Persistent storage for user data', 'components': [{'name': 'Users table'}, {'name': 'email, password_hash, provider, provider_id'}, {'name': 'mfa_secret, webauthn_challenge'}, {'name': 'consent_version, consent_given_at'}, {'name': 'last_login_at, failed_login_count, locked_until'}, {'name': 'trusted_device_fingerprint (hashed)'}, {'name': 'created_at, updated_at'}]}]}
+            </div>
+            <p><em>System architecture diagram</em></p>
+        </section>
+        
+
+        <section id="license">
+            <h2>License</h2>
+            <p>MIT License - see <a href="https://github.com/laravelgpt/ghostauth/blob/main/LICENSE">LICENSE</a> for details.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; {{generation_date | split: "-" | first }} GhostAuth v2. Documentation generated with Documentation Generator Skill.</p>
+    </footer>
+
+    <script src="assets/app.js"></script>
+</body>
+</html>
