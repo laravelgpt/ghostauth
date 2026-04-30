@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GhostAuth v1 v1.0.0 - Documentation</title>
+    <link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+    <header>
+        <h1>GhostAuth v1</h1>
+        <p>A comprehensive, secure, and flexible authentication library for PHP.</p>
+        <p><em>Version 1.0.0 • Generated on 2026-04-30</em></p>
+    </header>
+
+    <main>
+        <section id="introduction">
+            <h2>Introduction</h2>
+            <p>A comprehensive, secure, and flexible authentication library for PHP.</p>
+        </section>
+
+        <section id="features">
+            <h2>Features</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Key Features</h3>
+                    <ul>
+                        <li>Core: GhostAuthManager, EmailPasswordProvider, OtpProvider, AbstractSocialProvider, GoogleProvider, GitHubProvider, OidcProvider</li>
+<li>Security: CookieGuard (AES-256-CTR + HMAC-SHA256), DeviceFingerprint, RateLimitingAware trait</li>
+<li>MFA: TotpAuthenticator (RFC 6238), TotpMfaHandler, WebAuthnAuthenticator (passkeys)</li>
+<li>Token: JwtIssuer (RS256/HS256, denylist revocation)</li>
+<li>Docs: README, CHANGELOG, AGENTS.md, SKILLS.md, PROMPT.md</li>
+<li>31 PHP files + docs</li>
+<li>Enterprise-grade PHP authentication library</li>
+
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="installation">
+            <h2>Installation</h2>
+            <pre><code>composer require ghostauth/ghostauth</code></pre>
+        </section>
+
+        <section id="usage">
+            <h2>Usage</h2>
+            <h3>Basic Usage Example</h3><pre><code>use GhostAuth\GhostAuthManager;
+use GhostAuth\Providers\EmailPasswordProvider;
+
+$authManager = new GhostAuthManager();
+
+$result = $authManager->authenticate(
+    new EmailPasswordProvider(),
+    [
+        'email' => 'user@example.com',
+        'password' => 'password123',
+    ]
+);
+
+if ($result->isValid()) {
+    // Authentication successful
+    $user = $result->getUser();
+    // Set session, etc.
+} else {
+    // Handle errors
+    $errors = $result->getErrors();
+}
+</code></pre>
+        </section>
+
+        <section id="configuration">
+            <h2>Configuration</h2>
+            <h3>Basic Configuration</h3><pre><code>// Example config
+$config = [
+    'cookie' => [
+        'name' => 'ghostauth_session',
+        'path' => '/',
+        'domain' => null,
+        'secure' => true,
+        'httponly' => true,
+        'samesite' => 'Strict',
+    ],
+    'jwt' => [
+        'private_key' => file_get_contents('/path/to/private.key'),
+        'algorithm' => 'RS256',
+        'ttl' => 3600,
+    ],
+    'providers' => [
+        'email' => [
+            'model' => 'App\Models\User',
+            'table' => 'users',
+        ],
+        'google' => [
+            'client_id' => 'your-google-client-id',
+            'client_secret' => 'your-google-client-secret',
+            'redirect_uri' => '/auth/google/callback',
+        ],
+    ],
+];
+</code></pre>
+        </section>
+
+        
+        <section id="architecture">
+            <h2>Architecture</h2>
+            <div class="architecture-diagram">
+                {'title': 'GhostAuth v1 Architecture', 'layers': [{'name': 'Application Layer', 'description': 'Your application using GhostAuth', 'components': [{'name': 'Controllers'}, {'name': 'Routes'}, {'name': 'Views/Templates'}]}, {'name': 'GhostAuthManager', 'description': 'Main authentication orchestrator', 'components': [{'name': 'EmailPasswordProvider'}, {'name': 'OtpProvider'}, {'name': 'AbstractSocialProvider'}, {'name': 'GoogleProvider'}, {'name': 'GitHubProvider'}, {'name': 'OidcProvider'}]}, {'name': 'Security Components', 'description': 'Security features and protections', 'components': [{'name': 'CookieGuard (AES-256-CTR + HMAC-SHA256)'}, {'name': 'DeviceFingerprint'}, {'name': 'RateLimitingAware trait'}, {'name': 'IP Change Detector'}]}, {'name': 'MFA Components', 'description': 'Multi-factor authentication methods', 'components': [{'name': 'TotpAuthenticator (RFC 6238)'}, {'name': 'TotpMfaHandler'}, {'name': 'WebAuthnAuthenticator (Passkeys)'}]}, {'name': 'Token Management', 'description': 'JWT token handling and revocation', 'components': [{'name': 'JwtIssuer (RS256/HS256)'}, {'name': 'Token Denylist (PSR-16 cache)'}]}, {'name': 'Storage Layer', 'description': 'Data persistence', 'components': [{'name': 'Users Table'}, {'name': 'Sessions Table'}, {'name': 'OTP Storage'}, {'name': 'WebAuthn Challenge Storage'}]}]}
+            </div>
+            <p><em>System architecture diagram</em></p>
+        </section>
+        
+
+        <section id="license">
+            <h2>License</h2>
+            <p>MIT License - see <a href="https://github.com/laravelgpt/ghostauth/blob/v1/LICENSE">LICENSE</a> for details.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; {{generation_date | split: "-" | first }} GhostAuth v1. Documentation generated with Documentation Generator Skill.</p>
+    </footer>
+
+    <script src="assets/app.js"></script>
+</body>
+</html>

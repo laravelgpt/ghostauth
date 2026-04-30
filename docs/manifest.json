@@ -1,0 +1,12 @@
+{
+  "generated_at": "2026-04-30T15:09:26.176892",
+  "generator": "Documentation Generator Skill",
+  "project_name": "GhostAuth v1",
+  "project_version": "1.0.0",
+  "files": [
+    "index.html",
+    "assets/app.css",
+    "assets/app.js",
+    "assets/architecture-diagram.svg"
+  ]
+}
